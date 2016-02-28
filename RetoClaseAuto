@@ -1,0 +1,71 @@
+// Playground - noun: a place where people can play
+
+import UIKit
+
+
+enum Estados : Int {
+
+    case Apagado = 0, Vel_Baja, Vel_Media, Vel_Alta
+    
+    init (){
+    self = .Apagado
+    }
+
+}
+
+class Auto {
+
+    var estados = Estados()
+    
+    //var estado : Int
+    
+    var estadoNumerico : Int
+    /*
+    {
+        get { return estado }
+        set { estado = newValue }
+    }
+    */
+    var gomas : Int
+    var puertas : Int
+    
+    
+    
+    init (gomas : Int, puertas : Int) {
+        
+        self.gomas = gomas
+        self.puertas = puertas
+        self.estadoNumerico = self.estados.rawValue
+    }
+    
+    func acelerarDesacelerarAuto(estados : Estados)-> String {
+        
+        self.estados = estados
+        self.estadoNumerico = self.estados.rawValue
+        
+        switch self.estadoNumerico
+        {
+        case 0:
+            return "El auto esta apagado"
+        case 1:
+            return "El auto esta en velocidad baja"
+        case 2:
+            return "El auto esta en velocidad media"
+        case 3:
+             return "El auto esta en velocidad alta"
+        default:
+             return "El auto esta en un estado no parametrizado"
+            
+        }
+    }
+
+}
+
+var c = Auto(gomas: 4, puertas: 4 )
+
+c.gomas
+c.puertas
+println("estados: \(c.estados.rawValue)")
+println("Estado Numerico: \(c.estadoNumerico)")
+c.estadoNumerico
+c.acelerarDesacelerarAuto(.Vel_Media)
